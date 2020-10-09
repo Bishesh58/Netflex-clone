@@ -10,30 +10,27 @@ body {
     padding-left: 50px
 }
 
-.original__movies img {
+.original__movies img, .movies__containerTrending img {
     margin-right: 10px;
     height: 250px;
     width: auto;
 }
 
-.original__movies{
+.original__movies, .movies__containerTrending{
     overflow-x: scroll;
     white-space: nowrap;
 }
 
-.movies__containerTrending img  {
+/* .movies__containerTrending img  {
     margin-right: 10px;
     width: 200px;
-}
+} */
 
 .movies__containerRated img{
     margin-right: 10px;
     width: 200px;
 }
-.movies__containerTrending{
-    overflow-x: scroll;
-    white-space: nowrap;
-}
+
 
 .movies__containerRated{
     overflow-x: scroll;
@@ -136,3 +133,4 @@ img {
     text-shadow: 2px 2px 4px rgba(0,0,0,.45);
     z-index: 10;
 }
+
