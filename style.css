@@ -1,41 +1,11 @@
+
 body {
     background-color: #111;
     color: white;
     font-family: 'Helvetica Neue',Helvetica,Arial,sans-serif;
     margin: 0;
-
 }
 
-.original__movies, .movies__containerTrending, .movies__containerRated {
-    padding-left: 50px
-}
-
-.original__movies img, .movies__containerTrending img {
-    margin-right: 10px;
-    height: 250px;
-    width: auto;
-}
-
-.original__movies, .movies__containerTrending{
-    overflow-x: scroll;
-    white-space: nowrap;
-}
-
-/* .movies__containerTrending img  {
-    margin-right: 10px;
-    width: 200px;
-} */
-
-.movies__containerRated img{
-    margin-right: 10px;
-    width: 200px;
-}
-
-
-.movies__containerRated{
-    overflow-x: scroll;
-    white-space: nowrap;
-}
 header {
     display: flex;
     justify-content: space-between;
@@ -50,18 +20,6 @@ header {
     padding-top: 15px;
 }
 
-.logo > img {
-    width: 120px;
-}
-
-.profile > img {
-    width: 40px;
-}
-
-img {
-    width: 100px;
-}
-
 .featured { 
     height: 400px;
     position: relative;
@@ -74,6 +32,16 @@ img {
     justify-content: center;
 }
 
+.featured::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+}
+
 .featured::after {
     content: "";
     position: absolute;
@@ -83,11 +51,6 @@ img {
     height: 7.4rem;
     background-image: linear-gradient(180deg,transparent,rgba(37,37,37,.61),#111);
 }
-
-.netflixOriginals h2, .movies__header h2 {
-    padding-left: 30px;
-}
-
 
 .featured h2 {
     font-size: 50px;
@@ -108,16 +71,6 @@ img {
     border-radius: 4px;
 }
 
-.featured::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.3);
-}
-
 .featured .featured__buttons .button__play {
     background-color: white; 
     color: black;
@@ -132,5 +85,44 @@ img {
     font-weight: 400;
     text-shadow: 2px 2px 4px rgba(0,0,0,.45);
     z-index: 10;
+}
+
+
+.original__movies, .movies__container{
+    padding-left: 50px
+}
+
+.original__movies img, .movies__containerTrending img, .movies-row img{
+    margin-right: 10px;
+    height: 250px;
+    width: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.original__movies, .movies-row {
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.logo > img {
+    width: 120px;
+}
+
+.profile > img {
+    width: 40px;
+}
+
+img {
+    width: 100px;
+}
+
+.netflixOriginals h2, .movies__header h2 {
+    padding-left: 30px;
+}
+
+.original__movies img:hover,
+.movies-row img:hover {
+    overflow-x: scroll;
+    transform: scale(1.1);
 }
 
