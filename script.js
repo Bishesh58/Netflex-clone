@@ -31,12 +31,64 @@ function fetchMovies(url, element_selector, path_type) {
 function showMovies(movies, element_selector, path_type) {
   var moviesEl = document.querySelector(element_selector);
   for (var movie of movies.results) {
-    var image = `
-            <img src="https://image.tmdb.org/t/p/original${movie[path_type]}"></img>
-        `;
-    moviesEl.innerHTML += image;
+    var imageElement = document.createElement('img');
+    imageElement.src = `https://image.tmdb.org/t/p/original${movie[path_type]}`
+    imageElement.setAttribute('data-id', movie.id);
+    
+    imageElement.addEventListener('click', (e) =>{
+      handleMovieSelection(e)
+    })
+
+    moviesEl.appendChild(imageElement);
   }
 }
+
+ const handleMovieSelection =(e)=>{
+   
+  const id = e.target.getAttribute('data-id');
+  const iframe = document.getElementById('movieTrailer');
+  
+  getMovieTrailer(id).then((data)=>{
+   const results = data.results;
+   const youtubeTrailers = results.filter((result)=>{
+     if(results.site == "Youtube" && results.type == "Trailer"){
+       return true;
+     } else{
+       return false;
+     }
+   })
+
+  })
+
+  $('#trailer').modal('show')
+
+  getMovieTrailer(id);
+ }
+
+async function getMovieTrailer(id){
+  var url = `${baseURL}/movie/${id}/videos?api_key=${API_KEY}`
+
+  return await fetch(url)
+  .then((response) => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error("something went wrong");
+    }
+  })
+  .catch((error_data) => {
+    console.log(error_data);
+  });
+}
+
+const setTrailer = (trailers)=>{
+  const iframe = document.getElementById('movieTrailer');
+  if(trailers.length > 0 ){
+    iframe.src = `https://www.youtube.com/embed/${trailers[0].key}`
+  }
+}
+
+
 
 
 function getOriginals() {
@@ -61,8 +113,6 @@ fetchgenres =()=>{
   url = `${baseURL}/genre/movie/list?api_key=${API_KEY}&language=en-US`
   fetch(url)
   .then((response) =>{
-    
-    console.log(response.clone().json());
     return response.json();
   })
   .then((data) =>{
