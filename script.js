@@ -135,23 +135,23 @@ showGenres =(movies)=>{
   let moviesContainer = document.querySelector(".movies__container");
 
  movies.genres.map((genre) =>{
+   console.log (genre.id);
 
   let titleEl = document.createElement('div');
   let moviesList = document.createElement('div');
 
-  moviesList.classList.add('.movies__genres');
   titleEl.classList.add('movies__title');
+  moviesList.classList.add('.movies__genres','scroll');
+  
 
   moviesContainer.append(titleEl);
   moviesContainer.append(moviesList);
 
-  console.log(moviesContainer);
-
   let movieName = genre.name.replace(/\s+/g, "");
   titleEl.innerHTML += `<h2>${movieName}</h2>`;
-  
 
   let url = `${baseURL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre.id}`
-  fetchMovies(url, ".movies__genres", "poster_path")
+  fetchMovies(url, ".movies__container", "poster_path");
+  
  })
 }
