@@ -59,9 +59,15 @@ function showMovies(movies, element_selector, path_type) {
      }
    })
    setTrailer(youtubeTrailers);
+   
   })
 
-  $('#trailer').modal('show')
+  $('#trailer').modal('show');
+
+  const closeButton = document.getElementById("close__button");
+  closeButton.addEventListener("click", ()=>{
+    iframe.src = iframe.src;
+  })
 
   getMovieTrailer(id);
  }
