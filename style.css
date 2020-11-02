@@ -92,7 +92,7 @@ header {
     padding-left: 50px
 }
 
-.original__movies img, .trending__movies img, .topRated__movies img{
+.movies__container img{
     margin-right: 10px;
     margin-bottom: 10px;
     height: 250px;
@@ -118,9 +118,7 @@ img {
 }
 
 
-.original__movies img:hover,
-.trending__movies img:hover,
-.topRated__movies img:hover {
+.movies__container img:hover {
     overflow-x: scroll;
     transform: scale(1.1);
 }

@@ -130,28 +130,52 @@ fetchgenres =()=>{
   })
 }
 
-showGenres =(movies)=>{
+showGenres =(data) =>{
+ data.genres.map((genre) =>{
 
-  let moviesContainer = document.querySelector(".movies__container");
-
- movies.genres.map((genre) =>{
-   console.log (genre.id);
-
-  let titleEl = document.createElement('div');
-  let moviesList = document.createElement('div');
-
-  titleEl.classList.add('movies__title');
-  moviesList.classList.add('.movies__genres','scroll');
-  
-
-  moviesContainer.append(titleEl);
-  moviesContainer.append(moviesList);
-
-  let movieName = genre.name.replace(/\s+/g, "");
-  titleEl.innerHTML += `<h2>${movieName}</h2>`;
-
-  let url = `${baseURL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genre.id}`
-  fetchMovies(url, ".movies__container", "poster_path");
-  
+  let movies = fetchMoviesBasedOnGenres(genre.id)
+    movies.then((movie)=>{
+      showMoviesBasedOnGenres(genre.name, movie);
+    })
  })
 }
+
+
+ function fetchMoviesBasedOnGenres(genreId){
+
+  let url = `${baseURL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
+  return fetch(url)
+  .then((res)=>{
+    return res.json();
+  })
+ }
+
+ const showMoviesBasedOnGenres = (genreName, movie)=>{
+
+  let moviesContainer = document.querySelector(".movies__container");
+  
+  let genreEl = document.createElement('div');
+  genreEl.classList.add('movies__title');
+  genreEl.innerHTML = `
+    <h2>${genreName}</h2>
+    `;
+  let movieEl = document.createElement('div');
+  movieEl.classList.add('genre__movies','scroll');
+  movieEl.setAttribute('id', genreName);
+
+  for (var movie of movie.results) {
+    var imageElement = document.createElement('img');
+    imageElement.src = `https://image.tmdb.org/t/p/original${movie["poster_path"]}`
+    imageElement.setAttribute('data-id', movie.id);
+    
+    imageElement.addEventListener('click', (e) =>{
+      handleMovieSelection(e)
+    })
+
+    movieEl.appendChild(imageElement);
+  }
+
+  moviesContainer.appendChild(genreEl);
+  moviesContainer.appendChild(movieEl);
+
+ }
