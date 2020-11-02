@@ -142,6 +142,6 @@ img {
 }
 
 .modal-body::after{
-    content: "Title";
+    content: "Description:";
     color: rgb(26, 23, 23);
 }

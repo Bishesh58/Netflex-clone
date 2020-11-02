@@ -50,7 +50,7 @@ function showMovies(movies, element_selector, path_type) {
   
   getMovieTrailer(id).then((data)=>{
    const results = data.results;
-   console.log(results);
+   
    const youtubeTrailers = results.filter((result)=>{
      if(result.site == "YouTube" && result.type == "Trailer"){
        return true;
