@@ -140,8 +140,3 @@ img {
 .modal-body{
     overflow: hidden;
 }
-
-.modal-body::after{
-    content: "Description:";
-    color: rgb(26, 23, 23);
-}
