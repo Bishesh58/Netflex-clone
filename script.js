@@ -30,7 +30,7 @@ window.onload = () => {
 
  showMovies =(movies, element_selector, path_type)=> {
   var moviesEl = document.querySelector(element_selector);
-  for (var movie of movies.results) {
+  (movies.results.map(movie =>{
     var imageElement = document.createElement('img');
     imageElement.src = `https://image.tmdb.org/t/p/original${movie[path_type]}`
     imageElement.setAttribute('data-id', movie.id);
@@ -40,7 +40,7 @@ window.onload = () => {
     })
 
     moviesEl.appendChild(imageElement);
-  }
+  })) 
 }
 
  const handleMovieSelection =(e)=>{
@@ -167,8 +167,7 @@ fetchMoviesBasedOnGenres =(genreId)=>{
   let movieEl = document.createElement('div');
   movieEl.classList.add('genre__movies','scroll');
   movieEl.setAttribute('id', genreName);
-
-  for (var movie of movie.results) {
+  movie.results.map(movie =>{
     var imageElement = document.createElement('img');
     imageElement.src = `https://image.tmdb.org/t/p/original${movie["poster_path"]}`
     imageElement.setAttribute('data-id', movie.id);
@@ -178,8 +177,7 @@ fetchMoviesBasedOnGenres =(genreId)=>{
     })
 
     movieEl.appendChild(imageElement);
-  }
-
+  })
   moviesContainer.appendChild(genreEl);
   moviesContainer.appendChild(movieEl);
 
