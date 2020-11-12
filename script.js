@@ -11,7 +11,7 @@ window.onload = () => {
 };
 
 
-function fetchMovies(url, element_selector, path_type) {
+ fetchMovies =(url, element_selector, path_type)=> {
   fetch(url)
     .then((response) => {
       if (response.ok) {
@@ -28,7 +28,7 @@ function fetchMovies(url, element_selector, path_type) {
     });
 }
 
-function showMovies(movies, element_selector, path_type) {
+ showMovies =(movies, element_selector, path_type)=> {
   var moviesEl = document.querySelector(element_selector);
   for (var movie of movies.results) {
     var imageElement = document.createElement('img');
@@ -102,19 +102,19 @@ const setTrailer = (trailers)=>{
 
 }
 
-function getOriginals() {
+ getOriginals =()=> {
   var url =
     `${baseURL}/discover/tv?api_key=${API_KEY}&with_networks=213`;
   fetchMovies(url, ".original__movies", "poster_path");
 }
 
-function getTrendingNow() {
+getTrendingNow =()=> {
   var url =
     `${baseURL}/trending/movie/week?api_key=${API_KEY}`;
   fetchMovies(url, ".trending__movies", "poster_path");
 }
 
-function getTopRated() {
+getTopRated =()=> {
   var url =
     `${baseURL}/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`;
   fetchMovies(url, ".topRated__movies", "poster_path");
@@ -146,8 +146,7 @@ showGenres =(data) =>{
  })
 }
 
-
- function fetchMoviesBasedOnGenres(genreId){
+fetchMoviesBasedOnGenres =(genreId)=>{
 
   let url = `${baseURL}/discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=${genreId}`
   return fetch(url)
