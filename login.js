@@ -15,19 +15,16 @@ loginForm.addEventListener("submit", (event)=>{
 
     fetch(apiUrl + "/login", {
         method: "POST",
-        headers:{
-            'Content-Type':'application/json'
+        headers: {
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify(payload)
     })
     .then((response)=>{
-        if(response.ok){
+        if (response.ok) {
             return response.json();
-        } else{
-            throw new Error ("something went wrong");
+        } else {
+            throw new Error("something went wrong");
         }
-    })
-    .then((response) =>{
-        console.log(response);
-    })
+    }) // returns a promise already
 })
