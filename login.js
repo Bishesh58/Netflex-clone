@@ -27,4 +27,9 @@ loginForm.addEventListener("submit", (event)=>{
             throw new Error("something went wrong");
         }
     }) // returns a promise already
+    .then((response)=>{
+        localStorage.setItem('token', response.token)
+        location.href = "/";
+    })
+
 })
