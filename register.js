@@ -1,6 +1,6 @@
 let registerForm = document.getElementById("register__form");
+let registerdSucessful = document.getElementById("registered__Successful");
 let apiUrl = 'http://localhost:3000';
-
 
 registerForm.addEventListener("submit", (event)=>{
     event.preventDefault();
@@ -11,7 +11,6 @@ registerForm.addEventListener("submit", (event)=>{
         password: document.getElementById("password").value
     }
 
-
     fetch(apiUrl + "/register", {
         method: "POST",
         headers: {
@@ -21,14 +20,23 @@ registerForm.addEventListener("submit", (event)=>{
     })
     .then((response)=>{
         if (response.ok) {
+            showmessage()
             return response.json();
         } else {
             throw new Error("something went wrong");
         }
-    }) // returns a promise already
-    .then((response)=>{
-        localStorage.setItem('token', response.token)
-        location.href = "/";
-    })
-
+    }) 
+   
 })
+
+
+function showmessage(){
+    registerdSucessful.innerHTML = "Successfully Registered!!"
+    inputReset();
+}
+
+function inputReset(){
+    document.getElementById("username").value = '';
+    document.getElementById("email").value = '';
+    document.getElementById("password").value = '';
+}
