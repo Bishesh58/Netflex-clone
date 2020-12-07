@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflex-clone-login</title>
-    <link rel="stylesheet" href="login.css">
-    <script src="session.js"></script>
+    <title>Register to netflex</title>
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
     <div class="wrapper">
@@ -14,10 +13,13 @@
               <a href="#"> <img src="./assets/logo.png" alt="logo"></a> 
             </div>
         </div>
-       <div class="login__body">
-            <div class="login__box">
+       <div class="register__body">
+            <div class="register__box">
                <h2>Sign in</h2>
-               <form id="login__form">
+               <form id="register__form">
+                    <div class="input__wrap">
+                        <input type="text" name="username" id="username" placeholder="Username">
+                    </div>
                    <div class="input__wrap">
                         <input type="text" name="email" id="email" placeholder="Email or phone number">
                    </div>
@@ -25,33 +27,26 @@
                         <input type="password" name="password" id="password" placeholder="Password">
                    </div>
                    <div class="input__wrap">
-                        <button>Sign in</button>
+                        <button>Sign up</button>
                    </div>
-                   <div class="support">
-                        <div class="remember">
-                            <span><input type="checkbox" style="margin: 0; padding: 0;  height:13px"></span>
-                            <span>Remember me</span>
-                        </div>
-                        <div class="need__help">Need help?</div>
-                   </div>
-                   <div class="login__footer">
-                       <div class="login__facebook">
+                  
+                   <div class="register__footer">
+                       <div class="register__facebook">
                            <span><img src="./assets/facebook-icon.png" alt=""></span>
-                           <span><a href="#">Login with Facebook</a> </span>
+                           <span><a href="#">Register with Facebook</a> </span>
                        </div>
-                       <div class="sign__up">
-                           <p>New to Netflix? <a href="register.html">Sign up now.</a></p>
-                       </div>
+                       
                        <div class="terms">
                            <p>This page is protected by NeTflex-clone to ensure you're not a bot. <a href="#">Learn more.</a></p>
+                       </div>
+                       <div>
+                           <a class="backToLogin" href="login.html">Back to login</a>
                        </div>
                    </div>
                </form>
             </div>
        </div> 
-       
+     
     </div>
-
-    <script src="login.js"></script>
 </body>
 </html>
