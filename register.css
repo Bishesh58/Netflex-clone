@@ -148,6 +148,11 @@ body {
   }
 
   .backToLogin{
-      color: white;
+    padding: 5px;
+      color: rgb(223, 213, 213);
       text-decoration: none;
+      border: 1px solid rgb(77, 73, 73);
+      border-radius: 6px;
+   
+
   }
