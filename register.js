@@ -31,8 +31,11 @@ registerForm.addEventListener("submit", (event)=>{
 
 
 function showmessage(){
+    
     registerdSucessful.innerHTML = "Successfully Registered!!"
     inputReset();
+    setTimeout(() => {location.href = "/login.html";}, 3000);
+    
 }
 
 function inputReset(){
