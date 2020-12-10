@@ -10,7 +10,7 @@ loginForm.addEventListener("submit", (event)=>{
    
     let payload = {
         email: document.getElementById("email").value,
-        passowrd: document.getElementById("password").value
+        password: document.getElementById("password").value
     }
 
 
