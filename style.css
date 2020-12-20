@@ -119,33 +119,24 @@ header {
 }
 
 
-.dropdown:hover{
-    opacity: 1;
-}
-
-.dropdown::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
-}
-.dropdown{
-    background-color: black;
-    padding: 8px;
-    border-radius: 3px;
+.dropdown__container{
     position: absolute;
     top: 100%;
     right: 0;
-    /* margin-top: 10px; */
-    width:80px;
-    opacity: 0;
-    border-top: 10px solid transparent;
-    background-clip: padding-box;
+    padding-top: 3px;
+    display: none;
 }
 
+.dropdown{
+    background-color: black;
+    padding: 8px;
+    border-radius: 4px;
+    width:100px;
+}
+
+.profile:hover .dropdown__container{
+    display: block;
+}
 .dropdown span {
     cursor: pointer;
 }
