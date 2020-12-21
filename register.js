@@ -25,7 +25,13 @@ registerForm.addEventListener("submit", (event)=>{
         } else {
             throw new Error("something went wrong");
         }
-    }) 
+    })
+    .then((response)=>{
+        location.href = `/login.html?existingEmail=${payload.email}&registered=true`;
+    })
+    .catch((error) =>{
+        location.href = `/login.html?existingEmail${payload.email}`;
+    })
    
 })
 

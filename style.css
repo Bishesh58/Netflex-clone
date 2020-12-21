@@ -118,13 +118,17 @@ header {
     position: relative;
 }
 
-
+/* initially this container will hide */
 .dropdown__container{
     position: absolute;
     top: 100%;
     right: 0;
     padding-top: 3px;
     display: none;
+}
+/* showing dropdown__container on profile hover */
+.profile:hover .dropdown__container{
+    display: block;
 }
 
 .dropdown{
@@ -134,9 +138,7 @@ header {
     width:100px;
 }
 
-.profile:hover .dropdown__container{
-    display: block;
-}
+
 .dropdown span {
     cursor: pointer;
 }
