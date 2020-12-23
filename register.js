@@ -1,5 +1,5 @@
 let registerForm = document.getElementById("register__form");
-let registerdSucessful = document.getElementById("registered__Successful");
+
 let apiUrl = 'http://localhost:3000';
 
 registerForm.addEventListener("submit", (event)=>{
@@ -27,25 +27,15 @@ registerForm.addEventListener("submit", (event)=>{
         }
     })
     .then((response)=>{
-        location.href = `/login.html?existingEmail=${payload.email}&registered=true`;
+        location.href = `/login.html?existingEmail=${payload.email}`;
     })
-    .catch((error) =>{
-        location.href = `/login.html?existingEmail${payload.email}`;
+    .catch((error)=>{
+        location.href = `/login.html?existingEmail=${payload.email}`
     })
    
 })
 
 
-function showmessage(){
-    
-    registerdSucessful.innerHTML = "Successfully Registered!!"
-    inputReset();
-    setTimeout(() => {location.href = "/login.html";}, 3000);
-    
-}
 
-function inputReset(){
-    document.getElementById("username").value = '';
-    document.getElementById("email").value = '';
-    document.getElementById("password").value = '';
-}
+
+

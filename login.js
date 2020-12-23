@@ -1,25 +1,24 @@
 
 let loginForm = document.getElementById("login__form");
+let registerdSucessful = document.getElementById("registered__Successful");
 let apiUrl = 'http://localhost:3000';
 
 const queryString = location.search;
 const urlParams = new URLSearchParams(queryString);
 const existingEmail = urlParams.get('existingEmail');
-// const registered = urlParams.get('registered')
+
 if(existingEmail){
-    loginForm.email.value = existingEmail
+    loginForm.email.value = existingEmail;
+    registerdSucessful.innerHTML = "Registered Successful!!";
 }
-// if(registered){
-//     document.querySelector('.registered-alert').style.display = "block";
-// }
 
 
 loginForm.addEventListener("submit", (event)=>{
     event.preventDefault();
    
     let payload = {
-        email: document.getElementById("email").value,
-        password: document.getElementById("password").value
+        email: loginForm.email.value,
+        password: loginForm.password.value
     }
 
 
@@ -43,3 +42,4 @@ loginForm.addEventListener("submit", (event)=>{
     })
 
 })
+

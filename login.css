@@ -146,3 +146,9 @@ height: 25px;
   text-decoration: none;
   color: #0071eb;
 }
+
+.message__box{
+  padding: 5px;
+  margin: 10px;
+  color: green;
+}
