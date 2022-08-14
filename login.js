@@ -1,7 +1,9 @@
 
 let loginForm = document.getElementById("login__form");
 let registerdSucessful = document.getElementById("registered__Successful");
-let apiUrl = 'http://localhost:3000';
+//let apiUrl = 'http://localhost:3000';
+let apiUrl = 'https://netflix5858.netlify.app';
+//https://netflix5858.netlify.app/login.html
 
 const queryString = location.search;
 const urlParams = new URLSearchParams(queryString);
